@@ -1,0 +1,27 @@
+{
+  "server": {
+    "host": "::",
+    "port": 24011
+  },
+  "markets": {
+    "official_root": "./PluginMarket",
+    "third_party_root": "./ThirdPartyMarket",
+    "third_party_suffix": "-third",
+    "greetings": "§a欢迎使用 §bToolDelta 插件市场.",
+    "official_source_name": "ToolDelta插件市场 Official",
+    "third_party_source_name": "ThirdPluginMarket",
+    "third_party_market_version": "0.1.0",
+    "official_greetings": "§a欢迎使用 §bToolDelta 插件市场.",
+    "third_party_greetings": "§a欢迎使用第三方插件市场."
+  },
+  "sync": {
+    "official_git_enabled": true,
+    "official_check_interval_seconds": 300,
+    "third_party_scan_interval_seconds": 60,
+    "git_timeout_seconds": 30
+  },
+  "storage": {
+    "build_dir": "./build",
+    "log_dir": "./logs"
+  }
+}

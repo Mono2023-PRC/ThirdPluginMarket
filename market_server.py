@@ -663,11 +663,16 @@ class MarketManager:
                 actual_root_path=package.actual_root_path,
                 virtual_root_name=virtual_root,
             )
-
+        official_plugin_count = len(official_scan.plugins)
+        official_package_count = len(official_scan.packages)
+        third_party_plugin_count = len(third_scan.plugins)
+        third_party_package_count = len(third_scan.packages)
+        merged_plugin_count = len(merged_market_plugins)
+        merged_package_count = len(merged_packages)
         merged_market_tree = {
             "MarketVersion": third_scan.market_version,
-            "SourceName": f"{official_scan.source_name}&{third_scan.source_name}",
-            "Greetings": self.config.greetings,
+            "SourceName": f"{official_scan.source_name} & {third_scan.source_name}",
+            "Greetings": self.config.greetings.replace("{total}", str(merged_plugin_count)).replace("{total_official_plugins}", str(official_plugin_count)).replace("{total_third_party_plugins}", str(third_party_plugin_count)),
             "MarketPlugins": merged_market_plugins,
             "Packages": merged_packages,
         }
@@ -684,10 +689,10 @@ class MarketManager:
             third_party_root_name_map=third_party_root_name_map,
             official_indexes=official_indexes,
             third_party_indexes=third_indexes,
-            official_plugin_count=len(official_scan.plugins),
-            official_package_count=len(official_scan.packages),
-            third_party_plugin_count=len(third_scan.plugins),
-            third_party_package_count=len(third_scan.packages),
+            official_plugin_count=official_plugin_count,
+            official_package_count=official_package_count,
+            third_party_plugin_count=third_party_plugin_count,
+            third_party_package_count=third_party_package_count,
         )
 
     def write_build_indexes(self, name: str, indexes: SourceIndexes) -> None:
